@@ -23,6 +23,9 @@ $stmt->execute();
 // Fetch all rows as an associative array
 $result = $stmt->fetchAll();
 
+
+
+
 ?>
 
 
@@ -51,8 +54,10 @@ $result = $stmt->fetchAll();
             <td><?php echo $item["name"]; ?></td>
             <td><?php echo $item["description"]; ?></td>
             <td>
-                <a href="#" class="btn btn-info">Редагувати</a>
-                <a href="#" class="btn btn-danger">Видалить</a>
+               <a href="/change.php?index_data=<?php echo $item['id'];?>" class="btn btn-info">Редагувати</a>
+
+                <button onclick="deleteButton(<?php echo $item['id'];?>)" class="btn btn-danger">Видалить</button>
+                <a id="deleteItem" href="/delete.php?delete_id=<?php echo $item['id'];?>" type="hidden"></a>
             </td>
         </tr>
 
@@ -63,5 +68,21 @@ $result = $stmt->fetchAll();
 </table>
 
 <script src="/js/bootstrap.bundle.min.js"></script>
+<script>
+    function deleteButton(elementId) {
+
+
+        // Show confirmation dialog
+        var confirmDelete = confirm("Are you sure you want to delete this element?");
+
+        if (confirmDelete) {
+            // Use AJAX to send the request to delete the element
+           document.getElementById("deleteItem").click();
+
+        } else {
+            console.log("Deletion canceled.");
+        }
+    };
+</script>
 </body>
 </html>

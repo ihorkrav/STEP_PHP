@@ -72,15 +72,15 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
 
 <script>
     function readURL(input) {
-    if (input.files && input.files[0]) {
-    var reader = new FileReader();
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
 
-    reader.onload = function (e) {
-    $('#img_preview').attr('src', e.target.result).width(100).height(100);
-    };
+            reader.onload = function (e) {
+                $('#img_preview').attr('src', e.target.result).width(100).height(100);
+            };
 
-    reader.readAsDataURL(input.files[0]);
-    }
+            reader.readAsDataURL(input.files[0]);
+        }
     }
 
     function imgBtnClick(){
